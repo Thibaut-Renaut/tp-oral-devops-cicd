@@ -99,6 +99,8 @@ jobs:
             docker run -d -p 3001:3001 --name ${{env.BACK_IMAGE_NAME}} ${{env.REPO}}/thibaut-renaut/${{env.BACK_IMAGE_NAME}}:latest
             docker run -d -p 8080:80 --name ${{env.FRONT_IMAGE_NAME}} ${{env.REPO}}/thibaut-renaut/${{env.FRONT_IMAGE_NAME}}:latest
 
-            # Vérification du démarrage
-            curl localhost:3001
-            curl localhost:8080
+            sleep 5
+
+            # Vérification du démarrage avec l'IPv4 explicite
+            curl http://127.0.0.1:3001
+            curl http://127.0.0.1:8080
