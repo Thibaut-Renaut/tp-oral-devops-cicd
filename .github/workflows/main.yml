@@ -18,7 +18,16 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Lancer les tests
+      - name: Installer les dépendances du backend
+        working-directory: ./backend
+        run: npm install
+
+      - name: Lancer les tests backend (Jest)
+        working-directory: ./backend
+        run: npm test
+
+      - name: Lancer les tests frontend (Vérification des fichiers)
+        working-directory: ./frontend
         run: ls -lah
 
   build:
