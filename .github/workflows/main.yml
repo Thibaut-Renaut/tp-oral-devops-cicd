@@ -96,9 +96,9 @@ jobs:
             # Suppression des anciens conteneurs pour libérer les ports
             docker rm -f ${{env.BACK_IMAGE_NAME}} ${{env.FRONT_IMAGE_NAME}} || true
 
-            docker run -d -p 3000:3000 --name ${{env.BACK_IMAGE_NAME}} ${{env.REPO}}/thibaut-renaut/${{env.BACK_IMAGE_NAME}}:latest
+            docker run -d -p 3001:3001 --name ${{env.BACK_IMAGE_NAME}} ${{env.REPO}}/thibaut-renaut/${{env.BACK_IMAGE_NAME}}:latest
             docker run -d -p 8080:80 --name ${{env.FRONT_IMAGE_NAME}} ${{env.REPO}}/thibaut-renaut/${{env.FRONT_IMAGE_NAME}}:latest
 
             # Vérification du démarrage
-            curl localhost:3000
+            curl localhost:3001
             curl localhost:8080
